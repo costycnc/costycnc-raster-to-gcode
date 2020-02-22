@@ -20,21 +20,19 @@ dpi=<input id="scaledpi" value="96"><br>
 
 
 
-Zoom<input type="text" id="myText" value="1"><input type="text" id="myText1" value=".1"><br>
+Zoom<input type="text" id="myText" value="1" disabled><input type="text" id="myText1" value=".1" disabled><br>
 
 <p>
 
- <input id="myRange" type="range" min=".01" max="200" value="1" step=".01" onchange="display()">
+ <input id="myRange" type="range" min=".01" max="5" value="1" step=".01" onchange="display()">
 
  
 
- <input id="myRange1" type="range" min=".01" max="200" value="1" step=".01" onchange="display()">
+ <input id="myRange1" type="range" min=".01" max="5" value="1" step=".01" onchange="display()">
 
  
 
- <input type="text" id="myText2">
-
-  insieme x e y <input type="checkbox" id="due"><br>
+  insieme x e y <input type="checkbox" id="due" onchange="check()"><br>
   
 <button onclick="calculeaza()">calculeaza</button> <input type="text" id="calcx"><input type="text" id="calcy"></p>
 
@@ -50,7 +48,8 @@ Zoom<input type="text" id="myText" value="1"><input type="text" id="myText1" val
 
 <script>
 
-
+var initialx;
+var initialy;
 
     
 
@@ -148,7 +147,8 @@ Zoom<input type="text" id="myText" value="1"><input type="text" id="myText1" val
 
     display(); //solo prima volta
 
-
+initialx=Potrace.getdimx();
+initialy=Potrace.getdimy();
 
 	//-text1=Potrace.getSVG(scale);
 
@@ -223,9 +223,13 @@ y=x;
 
 
   document.getElementById("myRange1").disabled = true;
+  document.getElementById("calcy").disabled = true;
 
-}else document.getElementById("myRange1").disabled = false;
-
+}else 
+{
+document.getElementById("myRange1").disabled = false;
+document.getElementById("calcy").disabled = false;
+}
 
 
 
@@ -277,8 +281,7 @@ gcode.value=first;
   gcode.value = Potrace.getSVG1(x*rap,y*rap);
     //gcode.value = Potrace.getSVG1(1/96,1/96);
 
-var valudim=Potrace.getdimx()+" cm X "+Potrace.getdimy()+" cm";
-document.getElementById("myText2").value=valudim;
+
 
 document.getElementById("calcx").value=Potrace.getdimx();
 
@@ -312,17 +315,35 @@ var y1=document.getElementById("myText1");
 
 }
 
+function check(){
 
+if(document.getElementById("due").checked)
+
+{
+  document.getElementById("calcy").disabled = true;
+  document.getElementById('myRange1').style.visibility = 'hidden';
+
+}else 
+{
+document.getElementById("myRange1").style.visibility = 'visible';
+document.getElementById("calcy").disabled = false;
+}
+
+}
 
 function calculeaza(){
 
 
 
 var valo=document.getElementById("calcx").value;
-var final=(valo/Potrace.getdimx()).toFixed(3);
-document.getElementById("myRange").value=final;
+var finalx=valo/initialx;
+document.getElementById("myRange").value=finalx;
+
+var valo=document.getElementById("calcy").value;
+var finaly=valo/initialy;
+document.getElementById("myRange1").value=finaly;
 display();
-alert((valo/Potrace.getdimx()).toFixed(3));
+
 }
 
 function saveTextAsFile()

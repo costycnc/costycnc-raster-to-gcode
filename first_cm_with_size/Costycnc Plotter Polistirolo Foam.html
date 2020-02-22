@@ -1,12 +1,5 @@
 <html>
- <hr>
-
-
-
-
-
-
-
+<div>
 <input type="file" accept=".bmp,.jpg,.gif,.png" onchange="openFile(event)">
 
 <button onclick="saveTextAsFile()">Save gcode</button> 
@@ -20,7 +13,6 @@ dpi=<input id="scaledpi" value="96"><br>
 
 
 
-Zoom<input type="text" id="myText" value="1" disabled><input type="text" id="myText1" value=".1" disabled><br>
 
 <p>
 
@@ -298,21 +290,6 @@ document.getElementById("calcy").value=Potrace.getdimy();
 
 
 
-
-var x1=document.getElementById("myText");
-
-var y1=document.getElementById("myText1");
-
-  x1.value = x;
-
-  y1.value = y;
-
-
-
-
-
-
-
 }
 
 function check(){
@@ -460,9 +437,8 @@ function destroyClickedElement(event)
 
 
 
-
-
 </div>
+
 
 
 

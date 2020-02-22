@@ -30,8 +30,7 @@
  *                                    result_image_size = original_image_size * size
  *                                    optional parameter opt_type can be "curve"
  */
-
-var dims;
+var maxx=0,maxy=0,maxx0=0,maxy0=0;
 
 var Potrace = (function() {
 
@@ -1243,10 +1242,9 @@ var Potrace = (function() {
 
 /**************************************************************/
 
-  function getdim() {return dims;
-  }/***************************getsvg1***********************************/    function getSVG1(sizex,sizey, opt_type) {	  	  var maxx=0,maxy=0,maxx0=0,maxy0=0,xx=0,yy=0;	  var firstx="";var firsty=""; var p="" ;      function path(curve) {          function bezier(i) {			  	 		   var b="";//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        if (i==0) {			    firstx=(curve.c[i * 3 + 1].x * sizex).toFixed(3);		firsty=(curve.c[i * 3 + 1].y * sizey).toFixed(3);			    b +="G01 X"+firstx;		b +=" Y0\n";						 }	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 maxx= (curve.c[i * 3 + 0].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 0].y * sizey).toFixed(3);         //xx=parseInt(maxx,10);     //yy = parseInt(maxy,10);      if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;		 b += 'G01 X' + maxx + ' Y' + maxy + '\n';			 maxx= (curve.c[i * 3 + 1].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 1].y * sizey).toFixed(3);          if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;			     b += 'G01 X' + maxx + ' Y' + maxy + '\n';	 maxx= (curve.c[i * 3 + 2].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 2].y * sizey).toFixed(3);          if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;			     b += 'G01 X' + maxx + ' Y' + maxy + '\n';        return b;      }          function segment(i) {		  var s=""; 		  		  	if (i==0) {			    firstx=(curve.c[i * 3 + 1].x * sizex).toFixed(3);		firsty=(curve.c[i * 3 + 1].y * sizey).toFixed(3);	    s +="G01 X"+firstx;		s +=" Y0\n";					 }	 maxx= (curve.c[i * 3 + 1].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 1].y * sizey).toFixed(3);          if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;			     s += 'G01 X' + maxx + ' Y' + maxy + '\n';			        return s;      }      var n = curve.n, i;           for (i = 0; i < n; i++) {		          if (curve.tag[i] === "CURVE") {          p += bezier(i);        } else if (curve.tag[i] === "CORNER") {                 p += segment(i);        }      }dims =maxx0+" cm x "+maxy0+" cm";      p += "G01 X"+firstx+" Y"+firsty+"\n"+"G01 Y0\n"+"G01 X0\n";      return p;    }      c = pathlist[0].curve;     var svg = path(c);    return svg;  }
-/**************************************************************/
-  
+  function getdimx() {return maxx0;
+  }  function getdimy() {return maxy0;  }/***************************getsvg1***********************************/    function getSVG1(sizex,sizey, opt_type) {	  	  maxx=0;	  maxy=0;	  maxx0=0;	  maxy0=0;	 	  var firstx="";var firsty=""; var p="" ;      function path(curve) {          function bezier(i) {			  	 		   var b="";//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        if (i==0) {			    firstx=(curve.c[i * 3 + 1].x * sizex).toFixed(3);		firsty=(curve.c[i * 3 + 1].y * sizey).toFixed(3);			    b +="G01 X"+firstx;		b +=" Y0\n";						 }	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++		 maxx= (curve.c[i * 3 + 0].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 0].y * sizey).toFixed(3);         //xx=parseInt(maxx,10);     //yy = parseInt(maxy,10);      if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;		 b += 'G01 X' + maxx + ' Y' + maxy + '\n';			 maxx= (curve.c[i * 3 + 1].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 1].y * sizey).toFixed(3);          if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;			     b += 'G01 X' + maxx + ' Y' + maxy + '\n';	 maxx= (curve.c[i * 3 + 2].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 2].y * sizey).toFixed(3);          if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;			     b += 'G01 X' + maxx + ' Y' + maxy + '\n';        return b;      }          function segment(i) {		  var s=""; 		  		  	if (i==0) {			    firstx=(curve.c[i * 3 + 1].x * sizex).toFixed(3);		firsty=(curve.c[i * 3 + 1].y * sizey).toFixed(3);	    s +="G01 X"+firstx;		s +=" Y0\n";					 }	 maxx= (curve.c[i * 3 + 1].x * sizex).toFixed(3);      maxy =  (curve.c[i * 3 + 1].y * sizey).toFixed(3);          if(maxx > maxx0) maxx0=maxx;     if(maxy > maxy0) maxy0=maxy;			     s += 'G01 X' + maxx + ' Y' + maxy + '\n';			        return s;      }      var n = curve.n, i;           for (i = 0; i < n; i++) {		          if (curve.tag[i] === "CURVE") {          p += bezier(i);        } else if (curve.tag[i] === "CORNER") {                 p += segment(i);        }      }      p += "G01 X"+firstx+" Y"+firsty+"\n"+"G01 Y0\n"+"G01 X0\n";      return p;    }      c = pathlist[0].curve;     var svg = path(c);    return svg;  }
+//*****************************************************************
   function getSVG(sizex,sizey, opt_type) {	  
   
     function path(curve) {
@@ -1312,7 +1310,7 @@ var Potrace = (function() {
     setParameter: setParameter,
     process: process,
     getSVG: getSVG,
-    getSVG1: getSVG1,
-    img: imgElement,		getdim: getdim
+    getSVG1: getSVG1,
+    img: imgElement,		getdimx: getdimx,		getdimy: getdimy
   };
 })();

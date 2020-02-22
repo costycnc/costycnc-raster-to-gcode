@@ -1,0 +1,436 @@
+<html>
+ <hr>
+
+
+
+
+
+
+
+<input type="file" accept=".bmp,.jpg,.gif,.png" onchange="openFile(event)">
+
+<button onclick="saveTextAsFile()">Save gcode</button> 
+
+dpi=<input id="scaledpi" value="96"><br>
+
+
+
+<textarea rows="10" cols="22" name="textg" id="gcode" form="usrform1">
+
+
+</textarea>
+
+
+
+Zoom<input type="text" id="myText" value="1"><input type="text" id="myText1" value=".1"><br>
+
+<p>
+
+ <input id="myRange" type="range" min=".01" max="20" value="1" step=".01" onchange="display()">
+
+ 
+
+ <input id="myRange1" type="range" min=".01" max="20" value="1" step=".01" onchange="display()">
+
+ 
+
+ <input type="text" id="myText2">
+
+  insieme x e y <input type="checkbox" id="due"></p>
+
+
+
+      <div id="svgdiv"> </div>
+
+
+
+<script src="./Costycnc Plotter Polistirolo Foam_files/potracex.js.download"></script>
+
+
+
+<script>
+
+
+
+    
+
+     
+
+    
+
+//-----------------------------------------------------
+
+
+
+  var openFile = function(event) {
+
+ //var scaledpi = document.getElementById('scaledpi').value;
+
+
+
+
+
+    var input = event.target;
+
+
+
+
+
+
+
+    var reader = new FileReader();
+
+
+
+    reader.onload = function(){
+
+
+
+      var dataURL = reader.result;
+
+
+
+      //var output = document.getElementById('output');
+
+
+
+      //output.src = dataURL;
+
+
+
+	   
+
+
+
+
+
+
+
+	  
+
+
+
+    };
+
+
+
+    reader.readAsDataURL(input.files[0]);
+
+
+
+	Potrace.loadImageFromFile(input.files[0]);
+
+	
+
+	//Potrace.loadImageFromUrl("test.png");
+
+	
+
+	
+
+	
+
+   
+
+
+
+	Potrace.process(function(){
+
+
+
+    //displayImg();
+
+
+
+	//-var scale = document.getElementById('scale').value;
+
+
+
+    display(); //solo prima volta
+
+
+
+	//-text1=Potrace.getSVG(scale);
+
+
+
+//text1=Potrace.getSVG();
+
+
+
+	//-myFunction();
+
+
+
+	//-gcode_verify();
+
+
+
+
+
+
+
+	
+
+
+
+  });
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+function display(){
+
+//questa funzie ogni volta quando cambia valore
+
+
+
+var scaledpi = document.getElementById('scaledpi').value;
+
+
+
+rap=(1/scaledpi)*2.54;
+
+
+
+
+
+
+
+var x=document.getElementById("myRange").value;
+
+var y=document.getElementById("myRange1").value;
+
+
+
+if(document.getElementById("due").checked)
+
+{
+
+y=x;
+
+
+
+  document.getElementById("myRange1").disabled = true;
+
+}else document.getElementById("myRange1").disabled = false;
+
+
+
+
+
+
+
+  var svgdiv = document.getElementById('svgdiv');
+
+
+
+  svgdiv.style.display = 'inline-block';
+
+
+
+  svgdiv.innerHTML = "<p>Result:</p>" + Potrace.getSVG(x/10,y/10);
+
+
+
+
+
+
+
+  var gcode = document.getElementById('gcode');
+
+
+
+  
+
+
+
+  
+
+  //sizex=sizex ://* .264;
+
+//sizey=sizey ;//* .264;
+
+/*
+
+var values = Potrace.getSVG1(x*rap,y*rap);
+
+var first = values.first;
+
+var second = values.second;
+
+gcode.value=first;
+
+*/
+
+  gcode.value = Potrace.getSVG1(x*rap,y*rap);
+    //gcode.value = Potrace.getSVG1(1/96,1/96);
+
+document.getElementById("myText2").value=Potrace.getdim();
+
+//alert(second);
+
+
+
+//var slider = document.getElementById("myRange");
+
+
+
+
+
+
+
+var x1=document.getElementById("myText");
+
+var y1=document.getElementById("myText1");
+
+  x1.value = x;
+
+  y1.value = y;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+function saveTextAsFile()
+
+
+
+{ 
+
+
+
+    //var textToSave = document.getElementById("mytext").value;
+
+
+
+    //var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+
+
+
+
+
+
+
+
+
+
+
+    var gcode = document.getElementById('gcode').value;
+
+
+
+
+
+
+
+    var textToSaveAsBlob = new Blob([gcode], {type:"text/plain"});
+
+
+
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+
+
+
+    var fileNameToSaveAs = "costycnc.nc";
+
+
+
+
+
+
+
+    var downloadLink = document.createElement("a");
+
+
+
+    downloadLink.download = fileNameToSaveAs;
+
+
+
+    downloadLink.innerHTML = "Download File";
+
+
+
+    downloadLink.href = textToSaveAsURL;
+
+
+
+    downloadLink.onclick = destroyClickedElement;
+
+
+
+    downloadLink.style.display = "none";
+
+
+
+    document.body.appendChild(downloadLink);
+
+
+
+ 
+
+
+
+    downloadLink.click();
+
+
+
+}
+
+
+
+
+
+
+
+function destroyClickedElement(event)
+
+
+
+{
+
+
+
+    document.body.removeChild(event.target);
+
+
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+</div>
+
+
+
+</html>

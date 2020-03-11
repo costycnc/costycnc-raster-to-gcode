@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+<body class="w3-content" style="max-width:1200px">
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+    <h3 class="w3-wide"><b>COSTYCNC</b></h3>
+	
+  </div>
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <a href="#" class="w3-bar-item w3-button">Shirts</a>
+    <a href="#" class="w3-bar-item w3-button">Dresses</a>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Jeans <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Skinny</a>
+      <a href="#" class="w3-bar-item w3-button">Relaxed</a>
+      <a href="#" class="w3-bar-item w3-button">Bootcut</a>
+      <a href="#" class="w3-bar-item w3-button">Straight</a>
+    </div>
+    <a href="#" class="w3-bar-item w3-button">Jackets</a>
+    <a href="#" class="w3-bar-item w3-button">Gymwear</a>
+    <a href="#" class="w3-bar-item w3-button">Blazers</a>
+    <a href="#" class="w3-bar-item w3-button">Shoes</a>
+  </div>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
+  <a href="#footer"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <div class="w3-bar-item w3-padding-24 w3-wide">LOGO</div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:250px">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+  <!-- Top header -->
+  <header class="w3-container w3-xlarge">
+    <p class="w3-left">Costycnc</p>
+    <p class="w3-right">
+      <i class="fa fa-shopping-cart w3-margin-right"></i>
+      <i class="fa fa-search"></i>
+    </p>
+  </header>
+
+  <!-- Image header -->
+  <div class="w3-display-container w3-container">
+	
+	<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+   
+	<div class="embed-container w3-round-large w3-card">
+	<iframe src="https://www.youtube.com/embed/n5jG0MW6ezE" frameborder="0" allowfullscreen=""></iframe>
+	</div>
+	<div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
+      <p><a href="https://costycnc.it" class="w3-button w3-red w3-padding-large w3-large">BUY NOW</a></p>
+    </div>
+  </div>
+  
+  
+  
+
+  <div class="w3-container w3-text-grey" id="jeans">
+    <p>8 items</p>
+  </div>
+
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale ">
+    <div class="w3-col l3 s6">
+      <div class="w3-container ">
+        <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+      </div>
+      <div class="w3-container">
+        <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container">
+          <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+          <span class="w3-tag w3-display-topleft">New</span>
+          <div class="w3-display-middle w3-display-hover">
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+      </div>
+      <div class="w3-container">
+        <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+      </div>
+      <div class="w3-container">
+        <div class="w3-display-container">
+          <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+          <span class="w3-tag w3-display-topleft">Sale</span>
+          <div class="w3-display-middle w3-display-hover">
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
+      </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
+      </div>
+      <div class="w3-container">
+        <img src="costy.jpg" style="width:100%" class="w3-round-large w3-card">
+        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Top program cerchio -->
+  <header class="w3-container w3-xlarge ">
+    <p class="w3-center w3-light-blue w3-circle w3-card-2">Programma semplice per creare gcode per cerchio</p>
+    
+  </header>
+  
+    <!-- Program cerchio-->
+	
+	<div class="w3-container w3-light-green w3-round-large w3-card">
+	
+Misura (diametro cerchio)=<input id="diametro" value="10">cm<button onclick="saveTextAsFile1()">Save cerchio</button> 
+	</div>
+  
+  
+  <!-- Top program -->
+  <header class="w3-container w3-xlarge ">
+    <p class="w3-center w3-light-blue w3-circle w3-card">Programma semplice per convertire immagine in gcode</p>
+    
+  </header>
+  
+    <!-- Program -->
+  
+<div class="w3-container w3-light-green w3-round-large w3-card">
+
+<input type="file" accept=".bmp,.jpg,.gif,.png" onchange="openFile(event)">
+
+<button onclick="saveTextAsFile()">Save gcode</button> 
+
+dpi=<input id="scaledpi" value="96"><br>
+
+
+
+<textarea rows="10" cols="22" name="textg" id="gcode" form="usrform1">
+
+
+</textarea>
+
+
+
+Zoom<input type="text" id="myText" value="1"><input type="text" id="myText1" value="1"><br>
+
+<p>
+
+ <input id="myRange" type="range" min=".1" max="10" value="1" step=".05" onchange="display()">
+
+ 
+
+ <input id="myRange1" type="range" min=".1" max="10" value="1" step=".05" onchange="display()">
+
+ 
+
+ <input type="text" id="myText2">
+
+  insieme x e y <input type="checkbox" id="due"></p>
+
+
+
+      <div id="svgdiv"> </div>
+
+
+
+<script src="potracex.js.download"></script>
+
+
+
+<script>
+
+  var openFile = function(event) {
+  var scaledpi = document.getElementById('scaledpi').value;
+  rap=scaledpi;
+  var input = event.target;
+  var reader = new FileReader();
+  reader.onload = function(){
+  var dataURL = reader.result;
+  alert(dataURL);
+  //var output = document.getElementById('output');
+  //output.src = dataURL;
+  };
+     reader.readAsDataURL(input.files[0]);
+     Potrace.loadImageFromFile(input.files[0]);
+	 
+  //Potrace.loadImageFromUrl("test.png");
+
+	Potrace.process(function(){
+       //displayImg();
+       //-var scale = document.getElementById('scale').value;
+       display(); //solo prima volta
+       //-text1=Potrace.getSVG(scale);
+       //text1=Potrace.getSVG();
+       //-myFunction();
+       //-gcode_verify();
+});
+};
+function display(){
+//questa funzie ogni volta quando cambia valore
+  var scaledpi = document.getElementById('scaledpi').value;
+  rap=scaledpi;
+  
+  var x=document.getElementById("myRange").value;
+  var y=document.getElementById("myRange1").value;
+    
+	if(document.getElementById("due").checked)
+       {
+         y=x;
+         document.getElementById("myRange1").disabled = true;
+       }else document.getElementById("myRange1").disabled = false;
+
+  var svgdiv = document.getElementById('svgdiv');
+  svgdiv.style.display = 'inline-block';
+  svgdiv.innerHTML = "<p>Result:</p>" + Potrace.getSVG((x*rap)/370,(y*rap)/370);//modifica solo svg image
+  var gcode = document.getElementById('gcode');
+  //sizex=sizex ://* .264;
+  //sizey=sizey ;//* .264;
+  
+  
+  
+  var values = Potrace.getSVG1(x*rap,y*rap);
+  var first = values.first;
+  var second = values.second;
+  gcode.value=first;
+
+  gcode.value = Potrace.getSVG1((x/scaledpi)*2.54,(y/scaledpi)*2.54);//modifica valori misura e gcode internal
+  document.getElementById("myText2").value=Potrace.getdim();
+  //alert(second);
+  //var slider = document.getElementById("myRange");
+
+  //var x1=document.getElementById("myText");
+  //var y1=document.getElementById("myText1");
+  //x1.value = x;
+  //y1.value = y;
+  
+  document.getElementById("myText").value=x;
+  document.getElementById("myText1").value=y;
+}
+
+function saveTextAsFile()
+{ 
+//var textToSave = document.getElementById("mytext").value;
+//var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+var gcode = document.getElementById('gcode').value;
+var textToSaveAsBlob = new Blob([gcode], {type:"text/plain"});
+var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+var fileNameToSaveAs = "costycnc.nc";
+var downloadLink = document.createElement("a");
+downloadLink.download = fileNameToSaveAs;
+downloadLink.innerHTML = "Download File";
+downloadLink.href = textToSaveAsURL;
+downloadLink.onclick = destroyClickedElement;
+downloadLink.style.display = "none";
+document.body.appendChild(downloadLink);
+downloadLink.click();
+}
+function saveTextAsFile1()
+{ 
+//var textToSave = document.getElementById("mytext").value;
+//var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+
+raze = document.getElementById('diametro').value/.2;
+var gcode='M3 S255\r\nG91\r\nG01 X0 Y';
+gcode +=raze;
+gcode +='\r\nG01 x10\r\nG03 X0 Y0 I';
+gcode +=raze;
+gcode +=' J0\r\nG01 X-10\r\nG01 Y-';
+gcode +=raze;
+var textToSaveAsBlob = new Blob([gcode], {type:"text/plain"});
+var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+var fileNameToSaveAs = "circle.nc";
+var downloadLink = document.createElement("a");
+downloadLink.download = fileNameToSaveAs;
+downloadLink.innerHTML = "Download File";
+downloadLink.href = textToSaveAsURL;
+downloadLink.onclick = destroyClickedElement;
+downloadLink.style.display = "none";
+document.body.appendChild(downloadLink);
+downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+document.body.removeChild(event.target);
+}
+</script>
+
+</div>
+  
+  <!-- Footer -->
+  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+    <div class="w3-row-padding">
+      <div class="w3-col s4">
+
+        <img src="costel.jpg" width="100%" class="w3-circle">
+      </div>
+
+      <div class="w3-col s4">
+        <h4>About</h4>
+        <p><a href="#">About us</a></p>
+        <p><a href="#">We're hiring</a></p>
+        <p><a href="#">Support</a></p>
+        <p><a href="#">Find store</a></p>
+        <p><a href="#">Shipment</a></p>
+        <p><a href="#">Payment</a></p>
+        <p><a href="#">Gift card</a></p>
+        <p><a href="#">Return</a></p>
+        <p><a href="#">Help</a></p>
+      </div>
+
+      <div class="w3-col s4 w3-justify">
+        <h4>Store</h4>
+        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+        <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
+        <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+        <h4>We accept</h4>
+        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+        <br>
+        <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+        <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
+        <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
+        <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+        <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+      </div>
+    </div>
+  </footer>
+
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+  <!-- End page content -->
+</div>
+
+<!-- Newsletter Modal -->
+<div id="newsletter" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-center">
+      <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+      <h2 class="w3-wide">NEWSLETTER</h2>
+      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Accordion 
+function myAccFunc() {
+  var x = document.getElementById("demoAcc");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// Click on the "Jeans" link on page load to open the accordion for demo purposes
+document.getElementById("myBtn").click();
+
+
+// Open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
